@@ -1,13 +1,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
-
-// define what components a stack should have 
-typedef struct {
-    int top;
-    int size; 
-    int* array;
-} Stack ;
+#include "stack.h"
 
 // create a function that creates a stack 
 Stack* new_stack(int size) {
@@ -49,42 +43,7 @@ int pop(Stack* stk) {
     return value;
 }
 
-
-
-int main() {
-    int n = 10;
-    Stack* stack = new_stack(n);
-
-    printf("HP-35 pocket calculator\n");
-
-    char* buffer = malloc(n);
-
-    int run = 1;
-
-    while (run) {
-        int val;
-        printf(" > ");
-        fgets(buffer, n, stdin);
-        if (strcmp(buffer, "\n") == 0) {
-            run = 0;
-        } else if (strcmp(buffer, "+\n") == 0) {
-            val = pop(stack) + pop(stack);
-            push(stack, val);
-        } else if (strcmp(buffer, "-\n") == 0) {
-            int temp = pop(stack);
-            int temp1 = pop(stack);
-            val = temp1 - temp;
-            push(stack, val);
-        } else if (strcmp(buffer, "*\n") == 0) {
-            val = pop(stack) * pop(stack);
-            push(stack, val);
-        } else {
-            val = atoi(buffer);
-            push(stack, val);
-        }
-    }
-    printf("the result is: %d\n\n", pop(stack));
-    free(stack);
-    free(buffer);
-    exit(0);
+void free_stack(Stack *stk) {
+    free(stk->array);
+    free(stk);
 }
