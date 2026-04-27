@@ -3,7 +3,7 @@
 #include <string.h>
 #include <time.h>
 
-#include "sort.h"
+#include "search.h"
 
 int unsorted_search(int array[], int length, int key) {
     for (int i = 0; i < length; i++) {

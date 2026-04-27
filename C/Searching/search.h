@@ -1,5 +1,5 @@
-#ifndef SORT_H
-#define SORT_H
+#ifndef SEARCH_H
+#define SEARCH_H
 
 
 int* create_array(int size);
